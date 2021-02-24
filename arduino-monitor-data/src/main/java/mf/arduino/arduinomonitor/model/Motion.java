@@ -1,6 +1,6 @@
 package mf.arduino.arduinomonitor.model;
 
-public class Motion {
+public class Motion extends BaseEntity{
     int motion;
 
     public int getMotion() {

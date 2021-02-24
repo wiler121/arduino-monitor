@@ -1,6 +1,6 @@
 package mf.arduino.arduinomonitor.model;
 
-public class Sensor {
+public class Sensor extends BaseEntity{
 
     private String humidity;
     private String temperature;

@@ -1,6 +1,6 @@
 package mf.arduino.arduinomonitor.model;
 
-public class Users {
+public class Users extends BaseEntity{
     private String username;
     private String passowrd;
 
