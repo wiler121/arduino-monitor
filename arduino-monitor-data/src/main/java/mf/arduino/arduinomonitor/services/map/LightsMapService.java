@@ -1,29 +1,29 @@
 package mf.arduino.arduinomonitor.services.map;
 
-import mf.arduino.arduinomonitor.model.Sensor;
+import mf.arduino.arduinomonitor.model.Lights;
 import mf.arduino.arduinomonitor.services.CrudService;
 
 import java.util.Set;
 
-public class SensorMapService extends AbstractMapService<Sensor, Long> implements CrudService<Sensor, Long> {
+public class LightsMapService extends AbstractMapService<Lights, Long> implements CrudService<Lights, Long> {
 
     @Override
-    public Set<Sensor> findAll() {
+    public Set<Lights> findAll() {
         return super.findAll();
     }
 
     @Override
-    public Sensor findById(Long id) {
+    public Lights findById(Long id) {
         return super.findById(id);
     }
 
     @Override
-    public Sensor save(Sensor object) {
+    public Lights save(Lights object) {
         return super.save(object.getId(), object);
     }
 
     @Override
-    public void delete(Sensor object) {
+    public void delete(Lights object) {
         super.delete(object);
     }
 
