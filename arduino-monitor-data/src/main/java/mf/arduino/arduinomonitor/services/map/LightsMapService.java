@@ -2,9 +2,11 @@ package mf.arduino.arduinomonitor.services.map;
 
 import mf.arduino.arduinomonitor.model.Lights;
 import mf.arduino.arduinomonitor.services.LightsService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class LightsMapService extends AbstractMapService<Lights, Long> implements LightsService {
 
     @Override

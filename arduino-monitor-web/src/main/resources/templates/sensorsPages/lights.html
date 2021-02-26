@@ -5,6 +5,22 @@
     <title>Lights data</title>
 </head>
 <body>
-<h1 th:text="'Lights data'">Lights Index Page</h1>
+    <h1 th:text="'Lights data'">Lights Index Page</h1>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Light level</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="light : ${lights}">
+                <td th:text="${light.id}">1</td>
+                <td th:text="${light.lightLevel}">1</td>
+            </tr>
+            </tbody>
+        </table>
+
 </body>
 </html>

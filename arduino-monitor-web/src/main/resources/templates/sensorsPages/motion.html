@@ -6,5 +6,21 @@
 </head>
 <body>
 <h1 th:text="'Motion data'">Motion Index Page</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Motion</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="motion : ${motions}">
+        <td th:text="${motion.id}">1</td>
+        <td th:text="${motion.motion}">1</td>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>

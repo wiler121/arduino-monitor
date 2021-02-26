@@ -2,10 +2,10 @@ package mf.arduino.arduinomonitor.bootstrap;
 
 import mf.arduino.arduinomonitor.model.Lights;
 import mf.arduino.arduinomonitor.model.Motion;
+import mf.arduino.arduinomonitor.model.Sensor;
 import mf.arduino.arduinomonitor.services.LightsService;
 import mf.arduino.arduinomonitor.services.MotionService;
-import mf.arduino.arduinomonitor.services.map.LightsMapService;
-import mf.arduino.arduinomonitor.services.map.MotionMapService;
+import mf.arduino.arduinomonitor.services.SensorService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -14,15 +14,17 @@ public class DataLoader implements CommandLineRunner {
 
     private final LightsService lightsService;
     private final MotionService motionService;
+    private final SensorService sensorService;
 
 
-    public DataLoader() {
-        lightsService = new LightsMapService();
-        motionService = new MotionMapService();
+    public DataLoader(LightsService lightsService, MotionService motionService, SensorService sensorService) {
+        this.lightsService = lightsService;
+        this.motionService = motionService;
+        this.sensorService = sensorService;
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         Lights lights1 = new Lights();
         lights1.setId(1L);
@@ -47,6 +49,20 @@ public class DataLoader implements CommandLineRunner {
         motion2.setMotion(1);
 
         motionService.save(motion2);
+
+        Sensor sensor1 = new Sensor();
+        sensor1.setId(1L);
+        sensor1.setTemperature(22.3);
+        sensor1.setHumidity(48);
+        sensor1.setC02(26);
+        sensorService.save(sensor1);
+
+        Sensor sensor2 = new Sensor();
+        sensor2.setId(2L);
+        sensor2.setTemperature(22.4);
+        sensor2.setHumidity(47);
+        sensor2.setC02(25);
+        sensorService.save(sensor2);
 
         System.out.println("Data Loaded...");
 

@@ -2,31 +2,31 @@ package mf.arduino.arduinomonitor.model;
 
 public class Sensor extends BaseEntity{
 
-    private String humidity;
-    private String temperature;
-    private String c02;
+    private int humidity;
+    private double temperature;
+    private int c02;
 
-    public String getHumidity() {
+    public int getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(String humidity) {
+    public void setHumidity(int humidity) {
         this.humidity = humidity;
     }
 
-    public String getTemperature() {
+    public double getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(String temperature) {
+    public void setTemperature(double temperature) {
         this.temperature = temperature;
     }
 
-    public String getC02() {
+    public int getC02() {
         return c02;
     }
 
-    public void setC02(String c02) {
+    public void setC02(int c02) {
         this.c02 = c02;
     }
 }

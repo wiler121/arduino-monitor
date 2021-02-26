@@ -2,9 +2,11 @@ package mf.arduino.arduinomonitor.services.map;
 
 import mf.arduino.arduinomonitor.model.Motion;
 import mf.arduino.arduinomonitor.services.MotionService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class MotionMapService extends AbstractMapService<Motion, Long> implements MotionService {
 
     @Override

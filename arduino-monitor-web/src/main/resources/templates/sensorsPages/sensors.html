@@ -6,5 +6,24 @@
 </head>
 <body>
     <h1 th:text="'Sensors data'">Sensors Index Page</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>temperature</th>
+            <th>humidity</th>
+            <th>Co2</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sensor : ${sensors}">
+            <td th:text="${sensor.id}">1</td>
+            <td th:text="${sensor.temperature}">1</td>
+            <td th:text="${sensor.humidity}">1</td>
+            <td th:text="${sensor.c02}">1</td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>

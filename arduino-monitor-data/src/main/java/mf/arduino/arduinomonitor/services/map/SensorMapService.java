@@ -2,9 +2,11 @@ package mf.arduino.arduinomonitor.services.map;
 
 import mf.arduino.arduinomonitor.model.Sensor;
 import mf.arduino.arduinomonitor.services.SensorService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class SensorMapService extends AbstractMapService<Sensor, Long> implements SensorService {
 
     @Override
