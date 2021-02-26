@@ -1,11 +1,11 @@
 package mf.arduino.arduinomonitor.services.map;
 
 import mf.arduino.arduinomonitor.model.Motion;
-import mf.arduino.arduinomonitor.services.CrudService;
+import mf.arduino.arduinomonitor.services.MotionService;
 
 import java.util.Set;
 
-public class MotionMapService extends AbstractMapService<Motion, Long> implements CrudService<Motion, Long> {
+public class MotionMapService extends AbstractMapService<Motion, Long> implements MotionService {
 
     @Override
     public Set<Motion> findAll() {
@@ -30,5 +30,10 @@ public class MotionMapService extends AbstractMapService<Motion, Long> implement
     @Override
     public void deleteById(Long id) {
         super.deleteById(id);
+    }
+
+    @Override
+    public Motion findByMotion(int motion) {
+        return null;
     }
 }

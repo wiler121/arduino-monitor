@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/sensorsPages")
 @Controller
-public class SensorController {
+public class MotionController {
 
-    @RequestMapping({"/", "/sensors", "/sensors.html"})
-    public String listSensorsData(){
-        return "sensorsPages/sensors";
+    @RequestMapping({"/", "/motion", "/motion.html"})
+    public String listMotionData(){
+        return "sensorsPages/motion";
     }
 }

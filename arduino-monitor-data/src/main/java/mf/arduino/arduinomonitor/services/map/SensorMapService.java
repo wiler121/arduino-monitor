@@ -1,11 +1,11 @@
 package mf.arduino.arduinomonitor.services.map;
 
 import mf.arduino.arduinomonitor.model.Sensor;
-import mf.arduino.arduinomonitor.services.CrudService;
+import mf.arduino.arduinomonitor.services.SensorService;
 
 import java.util.Set;
 
-public class SensorMapService extends AbstractMapService<Sensor, Long> implements CrudService<Sensor, Long> {
+public class SensorMapService extends AbstractMapService<Sensor, Long> implements SensorService {
 
     @Override
     public Set<Sensor> findAll() {
@@ -30,5 +30,20 @@ public class SensorMapService extends AbstractMapService<Sensor, Long> implement
     @Override
     public void deleteById(Long id) {
         super.deleteById(id);
+    }
+
+    @Override
+    public Sensor findByTemp(int temp) {
+        return null;
+    }
+
+    @Override
+    public Sensor findByHum(int hum) {
+        return null;
+    }
+
+    @Override
+    public Sensor findByCO2(int co2) {
+        return null;
     }
 }
