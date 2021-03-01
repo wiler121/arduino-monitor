@@ -21,7 +21,7 @@ public class SensorMapService extends AbstractMapService<Sensor, Long> implement
 
     @Override
     public Sensor save(Sensor object) {
-        return super.save(object.getId(), object);
+        return super.save(object);
     }
 
     @Override

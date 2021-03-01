@@ -21,7 +21,7 @@ public class MotionMapService extends AbstractMapService<Motion, Long> implement
 
     @Override
     public Motion save(Motion object) {
-        return super.save(object.getId(), object);
+        return super.save(object);
     }
 
     @Override

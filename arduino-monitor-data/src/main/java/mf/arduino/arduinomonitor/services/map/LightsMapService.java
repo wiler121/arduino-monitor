@@ -21,7 +21,7 @@ public class LightsMapService extends AbstractMapService<Lights, Long> implement
 
     @Override
     public Lights save(Lights object) {
-        return super.save(object.getId(), object);
+        return super.save(object);
     }
 
     @Override
