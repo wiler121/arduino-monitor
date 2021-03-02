@@ -13,12 +13,14 @@
     <tr>
         <th>Id</th>
         <th>Motion</th>
+        <th>timestamp</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="motion : ${motions}">
         <td th:text="${motion.id}">1</td>
         <td th:text="${motion.motion}">1</td>
+        <td th:text="${motion.timestamp}">2020-11-14 01:26:15</td>
     </tr>
     </tbody>
 </table>

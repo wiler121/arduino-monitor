@@ -1,6 +1,14 @@
 package mf.arduino.arduinomonitor.model;
 
-public class Lights extends BaseEntity{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "lights")
+public class Lights extends timestampEntity{
+
+    @Column(name = "light_level")
     int lightLevel;
 
 

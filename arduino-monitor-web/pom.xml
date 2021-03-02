@@ -23,6 +23,11 @@
     <dependencies>
 
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
             <artifactId>arduino-monitor-data</artifactId>
             <groupId>mf.Arduino</groupId>
             <version>0.0.1</version>

@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class SensorController {
 
-    public final SensorService sensorService;
+
+
+        public final SensorService sensorService;
 
     public SensorController(SensorService sensorService) {
         this.sensorService = sensorService;

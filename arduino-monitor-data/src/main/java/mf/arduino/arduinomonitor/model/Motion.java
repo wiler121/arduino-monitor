@@ -1,6 +1,14 @@
 package mf.arduino.arduinomonitor.model;
 
-public class Motion extends BaseEntity{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "motion")
+public class Motion extends timestampEntity{
+
+    @Column(name = "motion")
     int motion;
 
     public int getMotion() {

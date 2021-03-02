@@ -1,10 +1,20 @@
 package mf.arduino.arduinomonitor.model;
 
-public class Sensor extends BaseEntity{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "sensor")
+public class Sensor extends timestampEntity{
+
+    @Column(name = "humidity")
     private int humidity;
+    @Column(name = "temperature")
     private double temperature;
-    private int c02;
+    @Column(name = "co2")
+    private int co2;
+
 
     public int getHumidity() {
         return humidity;
@@ -23,10 +33,10 @@ public class Sensor extends BaseEntity{
     }
 
     public int getC02() {
-        return c02;
+        return co2;
     }
 
     public void setC02(int c02) {
-        this.c02 = c02;
+        this.co2 = c02;
     }
 }

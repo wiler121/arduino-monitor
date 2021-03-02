@@ -20,6 +20,8 @@ public class LightsController {
 
         model.addAttribute("lights", lightsService.findAll());
 
+
+
          return "sensorsPages/lights";
     }
 }
