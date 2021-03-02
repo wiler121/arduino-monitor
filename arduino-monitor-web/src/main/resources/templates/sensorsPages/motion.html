@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'motion')}">
 <head>
     <meta charset="UTF-8">
     <title>Motion data</title>
 </head>
 <body>
-<h1 th:text="'Motion data'">Motion Index Page</h1>
+<h2 th:text="'Motion data'">Motion Index Page</h2>
 
-<table>
+<table id="motion" class="table table-striped">
     <thead>
     <tr>
         <th>Id</th>

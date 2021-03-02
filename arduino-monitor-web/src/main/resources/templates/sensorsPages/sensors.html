@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'sensors')}">
 <head>
     <meta charset="UTF-8">
     <title>Sensors data</title>
 </head>
 <body>
-    <h1 th:text="'Sensors data'">Sensors Index Page</h1>
+    <h2 th:text="'Sensors data'">Sensors Index Page</h2>
 
-    <table>
+    <table id="sensors" class="table table-striped">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>temperature</th>
-            <th>humidity</th>
-            <th>Co2</th>
+            <th style="width: 150px;">Id</th>
+            <th style="width: 150px;">temperature</th>
+            <th style="width: 150px;">humidity</th>
+            <th style="width: 150px;">Co2</th>
         </tr>
         </thead>
         <tbody>

@@ -9,6 +9,8 @@ import mf.arduino.arduinomonitor.services.SensorService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.sql.Timestamp;
+
 @Component
 public class DataLoader implements CommandLineRunner {
 
@@ -30,11 +32,13 @@ public class DataLoader implements CommandLineRunner {
 
         Lights lights1 = new Lights();
         lights1.setLightLevel(384);
+        lights1.setTimestamp(Timestamp.valueOf("2020-11-14 01:03:10"));
 
         lightsService.save(lights1);
 
         Lights lights2 = new Lights();
         lights2.setLightLevel(321);
+        lights2.setTimestamp(Timestamp.valueOf("2020-11-14 01:07:10"));
 
         lightsService.save(lights2);
 

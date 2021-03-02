@@ -58,14 +58,19 @@
             <span>Home</span>
           </li>
 
-          <li th:replace="::menuItem ('/owners/find','owners','find owners','search','Find owners')">
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            <span>Find owners</span>
+          <li th:replace="::menuItem ('/sensorsPages/sensors','sensors','sensors','th-list','sensors')">
+            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+            <span>Sensors</span>
           </li>
 
-          <li th:replace="::menuItem ('/vets.html','vets','veterinarians','th-list','Veterinarians')">
+          <li th:replace="::menuItem ('/sensorsPages/lights','lights','lights','th-list','lights')">
             <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-            <span>Veterinarians</span>
+            <span>Lights</span>
+          </li>
+
+          <li th:replace="::menuItem ('/sensorsPages/motion','motion','motion','th-list','motion')">
+            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+            <span>Motion</span>
           </li>
 
           <li

@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'lights')}">
 <head>
     <meta charset="UTF-8">
     <title>Lights data</title>
 </head>
 <body>
-    <h1 th:text="'Lights data'">Lights Index Page</h1>
+    <h2 th:text="'Lights data'">Lights Index Page</h2>
 
-        <table>
+        <table id="lights" class="table table-striped">
             <thead>
             <tr>
                 <th>Id</th>
                 <th>Light level</th>
+                <th>Timestamp</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="light : ${lights}">
                 <td th:text="${light.id}">1</td>
                 <td th:text="${light.lightLevel}">1</td>
+                <td th:text="${light.timestamp}">2020-11-14 01:26:15</td>
             </tr>
             </tbody>
         </table>
