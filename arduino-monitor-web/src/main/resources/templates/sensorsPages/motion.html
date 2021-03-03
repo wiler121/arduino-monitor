@@ -17,7 +17,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="motion : ${motions}">
+    <tr th:each="motion : ${motionList.motionList}">
         <td th:text="${motion.id}">1</td>
         <td th:text="${motion.motion}">1</td>
         <td th:text="${motion.timestamp}">2020-11-14 01:26:15</td>

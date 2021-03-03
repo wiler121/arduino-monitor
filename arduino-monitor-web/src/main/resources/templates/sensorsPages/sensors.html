@@ -18,12 +18,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="sensor : ${sensors}">
-            <td th:text="${sensor.id}">1</td>
-            <td th:text="${sensor.temperature}">1</td>
-            <td th:text="${sensor.humidity}">1</td>
-            <td th:text="${sensor.c02}">1</td>
-            <td th:text="${sensor.timestamp}">2020-11-14 01:26:15</td>
+        <tr th:each="sensor : ${sensorsList.sensorsList}">
+            <td th:text="${sensor?.id}">1</td>
+            <td th:text="${sensor?.temperature}">1</td>
+            <td th:text="${sensor?.humidity}">1</td>
+            <td th:text="${sensor?.c02}">1</td>
+            <td th:text="${sensor?.timestamp}">2020-11-14 01:26:15</td>
         </tr>
         </tbody>
     </table>

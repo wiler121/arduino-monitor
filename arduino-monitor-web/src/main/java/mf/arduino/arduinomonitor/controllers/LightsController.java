@@ -1,24 +1,31 @@
 package mf.arduino.arduinomonitor.controllers;
 
-import mf.arduino.arduinomonitor.services.LightsService;
+import mf.arduino.arduinomonitor.model.LightsList;
+import mf.arduino.arduinomonitor.repositories.LightsRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Map;
 
 @RequestMapping("/sensorsPages")
 @Controller
 public class LightsController {
 
-    private final LightsService lightsService;
+    private final LightsRepository lightsRepository;
 
-    public LightsController(LightsService lightsService) {
-        this.lightsService = lightsService;
+    public LightsController(LightsRepository lightsRepository) {
+        this.lightsRepository = lightsRepository;
     }
 
     @RequestMapping({"/", "/lights", "/lights.html"})
-    public String listLightsData(Model model){
+    public String listLightsData(Map<String, Object> model){
 
-        model.addAttribute("lights", lightsService.findAll());
+        LightsList lightsList = new LightsList();
+
+        lightsList.getLightsList().addAll(this.lightsRepository.findAll());
+
+        model.put("lightsList", lightsList);
+
 
 
 

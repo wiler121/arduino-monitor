@@ -1,26 +1,34 @@
 package mf.arduino.arduinomonitor.controllers;
 
-import mf.arduino.arduinomonitor.services.SensorService;
+import mf.arduino.arduinomonitor.model.SensorsList;
+import mf.arduino.arduinomonitor.repositories.SensorRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Map;
 
 @RequestMapping("/sensorsPages")
 @Controller
 public class SensorController {
 
+    private final SensorRepository sensorRepository;
 
-
-        public final SensorService sensorService;
-
-    public SensorController(SensorService sensorService) {
-        this.sensorService = sensorService;
+    public SensorController(SensorRepository sensorRepository) {
+        this.sensorRepository = sensorRepository;
     }
+
+
 
     @RequestMapping({"/", "/sensors", "/sensors.html"})
-    public String listSensorsData(Model model){
+    public String listSensorsData(Map<String, Object> model){
 
-        model.addAttribute("sensors", sensorService.findAll());
+        SensorsList sensorsList = new SensorsList();
+
+        sensorsList.getSensorsList().addAll(this.sensorRepository.findAll());
+        model.put("sensorsList", sensorsList);
+
         return "sensorsPages/sensors";
     }
+
+
 }

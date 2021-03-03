@@ -1,24 +1,30 @@
 package mf.arduino.arduinomonitor.controllers;
 
-import mf.arduino.arduinomonitor.services.MotionService;
+import mf.arduino.arduinomonitor.model.MotionList;
+import mf.arduino.arduinomonitor.repositories.MotionRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Map;
 
 @RequestMapping("/sensorsPages")
 @Controller
 public class MotionController {
 
-    private final MotionService motionService;
+    private final MotionRepository motionRepository;
 
-    public MotionController(MotionService motionService) {
-        this.motionService = motionService;
+    public MotionController(MotionRepository motionRepository) {
+        this.motionRepository = motionRepository;
     }
 
     @RequestMapping({"/", "/motion", "/motion.html"})
-    public String listMotionData(Model model){
+    public String listMotionData(Map<String, Object> model){
 
-        model.addAttribute("motions", motionService.findAll());
+        MotionList motionList = new MotionList();
+
+        motionList.getMotionList().addAll(this.motionRepository.findAll());
+        model.put("motionList", motionList);
+
         return "sensorsPages/motion";
     }
 }

@@ -6,16 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement
-public class SensorsList {
+public class LightsList {
 
-    private List<Sensor> sensorsList;
+    private List<Lights> lightsList;
 
     @XmlElement
-    public List<Sensor> getSensorsList() {
-        if (sensorsList == null) {
-            sensorsList = new ArrayList<>();
+    public List<Lights> getLightsList() {
+        if (lightsList == null) {
+            lightsList = new ArrayList<>();
         }
-        return sensorsList;
+        return lightsList;
     }
 }
-

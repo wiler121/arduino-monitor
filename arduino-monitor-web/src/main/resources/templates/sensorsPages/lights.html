@@ -17,7 +17,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="light : ${lights}">
+            <tr th:each="light : ${lightsList.lightsList}">
                 <td th:text="${light.id}">1</td>
                 <td th:text="${light.lightLevel}">1</td>
                 <td th:text="${light.timestamp}">2020-11-14 01:26:15</td>
