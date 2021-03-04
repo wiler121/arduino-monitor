@@ -2,7 +2,6 @@ package mf.arduino.arduinomonitor.services.map;
 
 
 import mf.arduino.arduinomonitor.model.User;
-import mf.arduino.arduinomonitor.repositories.RoleRepository;
 import mf.arduino.arduinomonitor.repositories.UserRepository;
 import mf.arduino.arduinomonitor.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +13,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private RoleRepository roleRepository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;

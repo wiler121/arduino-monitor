@@ -24,12 +24,6 @@ import java.util.List;
 @Controller
 public class SensorController {
 
-//    private final SensorRepository sensorRepository;
-//
-//    public SensorController(SensorRepository sensorRepository) {
-//        this.sensorRepository = sensorRepository;
-//    }
-
     @Autowired
     private SensorMapService sensorMapService;
 
@@ -43,7 +37,7 @@ public class SensorController {
     public String findPaginated(@PathVariable(value = "pageNo") int pageNo,
                                 @RequestParam("sortField") String sortField,
                                 @RequestParam("sortDir") String sortDir, Model model){
-        int pageSize = 100;
+        int pageSize = 200;
 
         Page<Sensor> page = sensorMapService.findPaginated(pageNo,pageSize,sortField,sortDir);
         List<Sensor> sensorList = page.getContent();

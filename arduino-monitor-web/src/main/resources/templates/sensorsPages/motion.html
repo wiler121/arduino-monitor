@@ -6,24 +6,53 @@
     <title>Motion data</title>
 </head>
 <body>
+<div>
 <h2 th:text="'Motion data'">Motion Index Page</h2>
 
 <table id="motion" class="table table-striped">
     <thead>
     <tr>
-        <th>Id</th>
-        <th>Motion</th>
-        <th>timestamp</th>
+        <th>
+            <a th:href="@{'/sensorsPages/motion/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">Id</a>
+        </th>
+        <th>
+            <a th:href="@{'/sensorsPages/motion/page/' + ${currentPage} + '?sortField=motion&sortDir=' + ${reverseSortDir}}">Motion</a>
+        </th>
+        <th>
+            <a th:href="@{'/sensorsPages/motion/page/' + ${currentPage} + '?sortField=timestamp&sortDir=' + ${reverseSortDir}}">timestamp</a>
+        </th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="motion : ${motionList.motionList}">
-        <td th:text="${motion.id}">1</td>
-        <td th:text="${motion.motion}">1</td>
-        <td th:text="${motion.timestamp}">2020-11-14 01:26:15</td>
+    <tr th:each="motion : ${motionList}">
+        <td th:text="${motion?.id}">1</td>
+        <td th:text="${motion?.motion}">1</td>
+        <td th:text="${motion?.timestamp}">2020-11-14 01:26:15</td>
     </tr>
     </tbody>
 </table>
+    <div th:if = "${totalPages > 1}">
+        <div>
+            <div>
+                Total Rows: [[${totalItems}]]
+            </div>
+            <div>
+					<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+						<a th:if="${currentPage != i}" th:href="@{'/sensorsPages/motion/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+						<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+					</span>
+            </div>
+            <div>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/sensorsPages/motion/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+                <span th:unless="${currentPage < totalPages}">Next</span>
+            </div>
 
+            <div>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/sensorsPages/motion/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+                <span th:unless="${currentPage < totalPages}">Last</span>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

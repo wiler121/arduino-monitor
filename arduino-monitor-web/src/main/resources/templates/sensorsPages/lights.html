@@ -6,18 +6,25 @@
     <title>Lights data</title>
 </head>
 <body>
+<div>
     <h2 th:text="'Lights data'">Lights Index Page</h2>
 
         <table id="lights" class="table table-striped">
             <thead>
             <tr>
-                <th>Id</th>
-                <th>Light level</th>
-                <th>Timestamp</th>
+                <th>
+                    <a th:href="@{'/sensorsPages/lights/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">Id</a>
+                </th>
+                <th>
+                    <a th:href="@{'/sensorsPages/lights/page/' + ${currentPage} + '?sortField=lightLevel&sortDir=' + ${reverseSortDir}}">Light level</a>
+                </th>
+                <th>
+                    <a th:href="@{'/sensorsPages/lights/page/' + ${currentPage} + '?sortField=timestamp&sortDir=' + ${reverseSortDir}}">timestamp</a>
+                </th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="light : ${lightsList.lightsList}">
+            <tr th:each="light : ${lightsList}">
                 <td th:text="${light.id}">1</td>
                 <td th:text="${light.lightLevel}">1</td>
                 <td th:text="${light.timestamp}">2020-11-14 01:26:15</td>
@@ -25,5 +32,28 @@
             </tbody>
         </table>
 
+    <div th:if = "${totalPages > 1}">
+        <div>
+            <div>
+                Total Rows: [[${totalItems}]]
+            </div>
+            <div>
+					<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+						<a th:if="${currentPage != i}" th:href="@{'/sensorsPages/lights/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+						<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+					</span>
+            </div>
+            <div>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/sensorsPages/lights/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+                <span th:unless="${currentPage < totalPages}">Next</span>
+            </div>
+
+            <div>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/sensorsPages/lights/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+                <span th:unless="${currentPage < totalPages}">Last</span>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

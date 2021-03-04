@@ -1,34 +1,50 @@
 package mf.arduino.arduinomonitor.controllers;
 
-import mf.arduino.arduinomonitor.model.LightsList;
-import mf.arduino.arduinomonitor.repositories.LightsRepository;
+import mf.arduino.arduinomonitor.model.Lights;
+import mf.arduino.arduinomonitor.services.map.LightsMapService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Map;
+import java.util.List;
 
 @RequestMapping("/sensorsPages")
 @Controller
 public class LightsController {
 
-    private final LightsRepository lightsRepository;
+    @Autowired
+    LightsMapService lightsMapService;
 
-    public LightsController(LightsRepository lightsRepository) {
-        this.lightsRepository = lightsRepository;
+    @GetMapping("/lights")
+    public String viewHomePage(Model model) {
+        return findPaginated(1, "id", "asc", model);
     }
 
-    @RequestMapping({"/", "/lights", "/lights.html"})
-    public String listLightsData(Map<String, Object> model){
+    @RequestMapping({"/lights/page/{pageNo}"})
+    public String findPaginated(@PathVariable(value = "pageNo") int pageNo,
+                                @RequestParam("sortField") String sortField,
+                                @RequestParam("sortDir") String sortDir, Model model){
+        int pageSize = 200;
 
-        LightsList lightsList = new LightsList();
+        Page<Lights> page = lightsMapService.findPaginated(pageNo,pageSize,sortField,sortDir);
+        List<Lights> lightsList = page.getContent();
 
-        lightsList.getLightsList().addAll(this.lightsRepository.findAll());
+        model.addAttribute("currentPage", pageNo );
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems",page.getTotalElements() );
 
-        model.put("lightsList", lightsList);
+        model.addAttribute("sortField", sortField );
+        model.addAttribute("sortDir", sortDir );
+        model.addAttribute("reverseSortDir", sortDir.equals("asc")?"desc":"asc");
 
+        model.addAttribute("lightsList", lightsList );
 
+        return "sensorsPages/lights";
 
-
-         return "sensorsPages/lights";
     }
 }
