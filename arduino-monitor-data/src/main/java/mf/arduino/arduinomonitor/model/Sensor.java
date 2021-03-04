@@ -32,11 +32,11 @@ public class Sensor extends timestampEntity{
         this.temperature = temperature;
     }
 
-    public int getC02() {
+    public int getCo2() {
         return co2;
     }
 
-    public void setC02(int c02) {
-        this.co2 = c02;
+    public void setCo2(int co2) {
+        this.co2 = co2;
     }
 }

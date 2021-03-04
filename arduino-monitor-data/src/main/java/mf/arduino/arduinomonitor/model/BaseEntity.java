@@ -10,6 +10,7 @@ import java.sql.Timestamp;
 public class BaseEntity implements Serializable {
 
     @Id
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "timestamp")

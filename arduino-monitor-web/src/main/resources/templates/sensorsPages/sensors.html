@@ -5,27 +5,67 @@
     <title>Sensors data</title>
 </head>
 <body>
+
+<div>
     <h2 th:text="'Sensors data'">Sensors Index Page</h2>
+
+    <div>
+        <a th:href="@{'/sensorsPages/sensors/page/'+ ${currentPage} +'/exportPdf'}">Export to PDF</a>
+    </div>
 
     <table id="sensors" class="table table-striped">
         <thead>
         <tr>
-            <th style="width: 150px;">Id</th>
-            <th style="width: 150px;">temperature</th>
-            <th style="width: 150px;">humidity</th>
-            <th style="width: 150px;">Co2</th>
-            <th style="width: 150px;">timestamp</th>
+            <th style="width: 150px;">
+                <a th:href="@{'/sensorsPages/sensors/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">Id</a>
+            </th>
+            <th style="width: 150px;">
+                <a th:href="@{'/sensorsPages/sensors/page/' + ${currentPage} + '?sortField=temperature&sortDir=' + ${reverseSortDir}}">temperature</a>
+            </th>
+            <th style="width: 150px;">
+                <a th:href="@{'/sensorsPages/sensors/page/' + ${currentPage} + '?sortField=humidity&sortDir=' + ${reverseSortDir}}">humidity</a>
+            </th>
+            <th style="width: 150px;">
+                <a th:href="@{'/sensorsPages/sensors/page/' + ${currentPage} + '?sortField=co2&sortDir=' + ${reverseSortDir}}">co2</a>
+            </th>
+            <th style="width: 150px;">
+                <a th:href="@{'/sensorsPages/sensors/page/' + ${currentPage} + '?sortField=timestamp&sortDir=' + ${reverseSortDir}}">timestamp</a>
+            </th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="sensor : ${sensorsList.sensorsList}">
+        <tr th:each="sensor : ${sensorList}">
             <td th:text="${sensor?.id}">1</td>
             <td th:text="${sensor?.temperature}">1</td>
             <td th:text="${sensor?.humidity}">1</td>
-            <td th:text="${sensor?.c02}">1</td>
+            <td th:text="${sensor?.co2}">1</td>
             <td th:text="${sensor?.timestamp}">2020-11-14 01:26:15</td>
         </tr>
         </tbody>
     </table>
+
+    <div th:if = "${totalPages > 1}">
+        <div>
+            <div>
+                Total Rows: [[${totalItems}]]
+            </div>
+            <div>
+					<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+						<a th:if="${currentPage != i}" th:href="@{'/sensorsPages/sensors/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+						<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+					</span>
+            </div>
+            <div>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/sensorsPages/sensors/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+                <span th:unless="${currentPage < totalPages}">Next</span>
+            </div>
+
+            <div>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/sensorsPages/sensors/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+                <span th:unless="${currentPage < totalPages}">Last</span>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
