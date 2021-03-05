@@ -29,17 +29,22 @@ public class SensorController {
 
 
     @GetMapping("/sensors")
-    public String viewHomePage(Model model) {
-        return findPaginated(1, "id", "desc", model);
+    public String viewHomePage(Model model, String startDate , String endDate) {
+        startDate = "2020-03-04_15:00:00";
+        endDate = "2099-03-04_15:27:07";
+        return findPaginated(1, "id", "desc", startDate,endDate,model);
     }
 
     @RequestMapping({"/sensors/page/{pageNo}"})
     public String findPaginated(@PathVariable(value = "pageNo") int pageNo,
                                 @RequestParam("sortField") String sortField,
-                                @RequestParam("sortDir") String sortDir, Model model){
-        int pageSize = 200;
+                                @RequestParam("sortDir") String sortDir,
+                                @RequestParam(value = "startDate", defaultValue = "2020-03-04_15:00:00") String startDate,
+                                @RequestParam(value = "endDate", defaultValue = "2099-03-04_15:27:07") String endDate,
+                                Model model){
+        int pageSize = 100;
 
-        Page<Sensor> page = sensorMapService.findPaginated(pageNo,pageSize,sortField,sortDir);
+        Page<Sensor> page = sensorMapService.findPaginated(pageNo,pageSize,sortField,sortDir, startDate, endDate);
         List<Sensor> sensorList = page.getContent();
 
         model.addAttribute("currentPage", pageNo );
@@ -48,7 +53,9 @@ public class SensorController {
 
         model.addAttribute("sortField", sortField );
         model.addAttribute("sortDir", sortDir );
-        model.addAttribute("reverseSortDir", sortDir.equals("desc")?"asc":"desc");
+        model.addAttribute("startDate",startDate);
+        model.addAttribute("endDate", endDate);
+        model.addAttribute("reverseSortDir", sortDir.equals("asc")?"desc":"asc");
 
         model.addAttribute("sensorList", sensorList );
 

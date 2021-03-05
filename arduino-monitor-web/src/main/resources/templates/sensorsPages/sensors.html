@@ -13,23 +13,34 @@
         <a th:href="@{'/sensorsPages/sensors/page/'+ ${currentPage} +'/exportPdf'}">Export to PDF</a>
     </div>
 
+    <div>
+        <form th:action="@{'/sensorsPages/sensors/page/' + ${currentPage} + '?sortField='+${sortField}+'&sortDir=' + ${sortDir}+'&startDate='+${startDate}+'&endDate='+${endDate}}">
+            <input name="sortField" type="text" class="form-control" th:value="${sortField}">
+            <input name="sortDir" type="text" class="form-control" th:value="${sortDir}">
+            <input name="startDate" type="text" class="form-control" th:value="${startDate}">
+            <input name="endDate" type="text" class="form-control" th:value="${endDate}">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Szukaj</button>
+        </form>
+    </div>
+    <br>
+
     <table id="sensors" class="table table-striped">
         <thead>
         <tr>
             <th style="width: 150px;">
-                <a th:href="@{'/sensorsPages/sensors/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">Id</a>
+                <a th:href="@{'/sensorsPages/sensors/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}+'&startDate='+${startDate}+'&endDate='+${endDate}}">Id</a>
             </th>
             <th style="width: 150px;">
-                <a th:href="@{'/sensorsPages/sensors/page/' + ${currentPage} + '?sortField=temperature&sortDir=' + ${reverseSortDir}}">temperature</a>
+                <a th:href="@{'/sensorsPages/sensors/page/' + ${currentPage} + '?sortField=temperature&sortDir=' + ${reverseSortDir}+'&startDate='+${startDate}+'&endDate='+${endDate}}">temperature</a>
             </th>
             <th style="width: 150px;">
-                <a th:href="@{'/sensorsPages/sensors/page/' + ${currentPage} + '?sortField=humidity&sortDir=' + ${reverseSortDir}}">humidity</a>
+                <a th:href="@{'/sensorsPages/sensors/page/' + ${currentPage} + '?sortField=humidity&sortDir=' + ${reverseSortDir}+'&startDate='+${startDate}+'&endDate='+${endDate}}">humidity</a>
             </th>
             <th style="width: 150px;">
-                <a th:href="@{'/sensorsPages/sensors/page/' + ${currentPage} + '?sortField=co2&sortDir=' + ${reverseSortDir}}">co2</a>
+                <a th:href="@{'/sensorsPages/sensors/page/' + ${currentPage} + '?sortField=co2&sortDir=' + ${reverseSortDir}+'&startDate='+${startDate}+'&endDate='+${endDate}}">co2</a>
             </th>
             <th style="width: 150px;">
-                <a th:href="@{'/sensorsPages/sensors/page/' + ${currentPage} + '?sortField=timestamp&sortDir=' + ${reverseSortDir}}">timestamp</a>
+                <a th:href="@{'/sensorsPages/sensors/page/' + ${currentPage} + '?sortField=timestamp&sortDir=' + ${reverseSortDir}+'&startDate='+${startDate}+'&endDate='+${endDate}}">timestamp</a>
             </th>
         </tr>
         </thead>

@@ -21,12 +21,12 @@ public class MotionMapService extends AbstractMapService<Motion, Long> implement
     MotionRepository motionRepository;
 
     @Override
-    public Page<Motion> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection) {
+    public Page<Motion> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection, String startDate, String endDate) {
         Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
                 Sort.by(sortField).descending();
 
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
-        return this.motionRepository.findAll(pageable);
+        return this.motionRepository.findBetweenDates(startDate,endDate,pageable);
     }
 
     @Override

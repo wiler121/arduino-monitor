@@ -13,17 +13,27 @@
         <a th:href="@{'/sensorsPages/motion/page/'+ ${currentPage} +'/exportPdf'}">Export to PDF</a>
     </div>
 
+    <div>
+        <form th:action="@{'/sensorsPages/motion/page/' + ${currentPage} + '?sortField='+${sortField}+'&sortDir=' + ${sortDir}+'&startDate='+${startDate}+'&endDate='+${endDate}}">
+            <input name="sortField" type="text" class="form-control" th:value="${sortField}">
+            <input name="sortDir" type="text" class="form-control" th:value="${sortDir}">
+            <input name="startDate" type="text" class="form-control" th:value="${startDate}">
+            <input name="endDate" type="text" class="form-control" th:value="${endDate}">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Szukaj</button>
+        </form>
+    </div>
+    <br>
 <table id="motion" class="table table-striped">
     <thead>
     <tr class="name">
         <th>
-            <a th:href="@{'/sensorsPages/motion/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">Id</a>
+            <a th:href="@{'/sensorsPages/motion/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}+'&startDate='+${startDate}+'&endDate='+${endDate}}">Id</a>
         </th>
         <th>
-            <a th:href="@{'/sensorsPages/motion/page/' + ${currentPage} + '?sortField=motion&sortDir=' + ${reverseSortDir}}">Motion</a>
+            <a th:href="@{'/sensorsPages/motion/page/' + ${currentPage} + '?sortField=motion&sortDir=' + ${reverseSortDir}+'&startDate='+${startDate}+'&endDate='+${endDate}}">Motion</a>
         </th>
         <th>
-            <a th:href="@{'/sensorsPages/motion/page/' + ${currentPage} + '?sortField=timestamp&sortDir=' + ${reverseSortDir}}">timestamp</a>
+            <a th:href="@{'/sensorsPages/motion/page/' + ${currentPage} + '?sortField=timestamp&sortDir=' + ${reverseSortDir}+'&startDate='+${startDate}+'&endDate='+${endDate}}">timestamp</a>
         </th>
     </tr>
     </thead>

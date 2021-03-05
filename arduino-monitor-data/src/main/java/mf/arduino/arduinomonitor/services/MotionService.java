@@ -10,7 +10,7 @@ public interface MotionService extends CrudService<Motion, Long>{
     Motion findByMotion(int motion);
     List<Motion> getAllMotions();
     Motion GetMotionById(Long id);
-    public Page<Motion> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection);
+    public Page<Motion> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection, String startDate, String endDate);
     public List<Motion> listAll();
     public List<Motion> findTop();
 

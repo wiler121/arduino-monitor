@@ -10,7 +10,7 @@ public interface SensorService extends CrudService<Sensor, Long>{
 
     List<Sensor> getAllSensors();
     Sensor getSensorById(Long id);
-    public Page<Sensor> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection);
+    public Page<Sensor> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection,String startDate, String endDate);
     public List<Sensor> listAll();
     Sensor findByTemp(int temp);
     Sensor findByHum(int hum);

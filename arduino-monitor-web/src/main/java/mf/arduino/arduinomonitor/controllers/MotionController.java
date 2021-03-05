@@ -27,21 +27,23 @@ public class MotionController {
     @Autowired
     private MotionMapService motionMapService;
 
-
-
     @GetMapping("/motion")
-    public String viewHomePage(Model model) {
-        return findPaginated(1, "id", "desc", model);
+    public String viewHomePage(Model model, String startDate , String endDate) {
+        startDate = "2020-03-04_15:00:00";
+        endDate = "2099-03-04_15:27:07";
+        return findPaginated(1, "id", "desc", startDate,endDate, model);
     }
 
     @RequestMapping({"/motion/page/{pageNo}"})
     public String findPaginated(@PathVariable(value = "pageNo") int pageNo,
                                 @RequestParam("sortField") String sortField,
                                 @RequestParam("sortDir") String sortDir,
+                                @RequestParam(value = "startDate", defaultValue = "2020-03-04_15:00:00") String startDate,
+                                @RequestParam(value = "endDate", defaultValue = "2099-03-04_15:27:07") String endDate,
                                 Model model){
-        int pageSize = 200;
+        int pageSize = 100;
 
-        Page<Motion> page = motionMapService.findPaginated(pageNo,pageSize,sortField,sortDir);
+        Page<Motion> page = motionMapService.findPaginated(pageNo,pageSize,sortField,sortDir,startDate,endDate);
         List<Motion> motionList = page.getContent();
 
         model.addAttribute("currentPage", pageNo );
@@ -50,6 +52,8 @@ public class MotionController {
 
         model.addAttribute("sortField", sortField );
         model.addAttribute("sortDir", sortDir );
+        model.addAttribute("startDate",startDate);
+        model.addAttribute("endDate", endDate);
         model.addAttribute("reverseSortDir", sortDir.equals("asc")?"desc":"asc");
 
         model.addAttribute("motionList", motionList );
@@ -74,7 +78,4 @@ public class MotionController {
         MotionPDFexporter motionPDFexporter = new MotionPDFexporter(motionDataList);
         motionPDFexporter.export(response);
     }
-
-
-
 }
