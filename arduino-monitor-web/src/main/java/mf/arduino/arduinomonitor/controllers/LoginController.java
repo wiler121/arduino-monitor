@@ -52,7 +52,7 @@ public class LoginController {
     @GetMapping("/login")
     public String login(Model model, String error, String logout) {
         if (securityService.isAuthenticated()) {
-            return "redirect:/";
+            return "redirect:/index.html";
         }
 
         if (error != null)
@@ -64,7 +64,7 @@ public class LoginController {
         return "login";
     }
 
-    @GetMapping({"/", "/index"})
+    @GetMapping({ "/index"})
     public String welcome(Model model) {
         return "index";
     }

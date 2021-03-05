@@ -21,13 +21,21 @@ public class LightsMapService extends AbstractMapService<Lights, Long> implement
     LightsRepository lightsRepository;
 
     @Override
-    public Page<Lights> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection) {
+    public Page<Lights> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection,String startDate, String endDate) {
         Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
                 Sort.by(sortField).descending();
 
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
-        return this.lightsRepository.findAll(pageable);
+        return this.lightsRepository.findBetweenDates(startDate,endDate,pageable);
     }
+
+
+
+    @Override
+    public List<Lights> findLatestLight() {
+        return this.lightsRepository.findLatestLights();
+    }
+
 
     @Override
     public List<Lights> listAll() {

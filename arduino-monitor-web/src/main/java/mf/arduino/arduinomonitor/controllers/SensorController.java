@@ -3,7 +3,7 @@ package mf.arduino.arduinomonitor.controllers;
 import com.lowagie.text.DocumentException;
 import mf.arduino.arduinomonitor.model.Sensor;
 import mf.arduino.arduinomonitor.services.map.SensorMapService;
-import mf.arduino.arduinomonitor.services.map.SensorPDFexporter;
+import mf.arduino.arduinomonitor.services.pdfexport.SensorPDFexporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -30,7 +30,7 @@ public class SensorController {
 
     @GetMapping("/sensors")
     public String viewHomePage(Model model) {
-        return findPaginated(1, "id", "asc", model);
+        return findPaginated(1, "id", "desc", model);
     }
 
     @RequestMapping({"/sensors/page/{pageNo}"})
@@ -48,7 +48,7 @@ public class SensorController {
 
         model.addAttribute("sortField", sortField );
         model.addAttribute("sortDir", sortDir );
-        model.addAttribute("reverseSortDir", sortDir.equals("asc")?"desc":"asc");
+        model.addAttribute("reverseSortDir", sortDir.equals("desc")?"asc":"desc");
 
         model.addAttribute("sensorList", sensorList );
 

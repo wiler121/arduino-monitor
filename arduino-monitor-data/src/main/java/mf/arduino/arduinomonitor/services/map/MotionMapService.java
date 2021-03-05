@@ -30,8 +30,13 @@ public class MotionMapService extends AbstractMapService<Motion, Long> implement
     }
 
     @Override
+    public List<Motion> findTop() {
+        return this.motionRepository.findLatest();
+    }
+
+    @Override
     public List<Motion> listAll() {
-        return motionRepository.findAll(Sort.by("id").ascending());
+        return motionRepository.findAll(Sort.by("id").descending());
     }
 
     @Override

@@ -89,6 +89,11 @@ public class SensorMapService extends AbstractMapService<Sensor, Long> implement
     public List<Sensor> listAll() {
         return sensorRepository.findAll(Sort.by("id").ascending());
     }
+
+    @Override
+    public List<Sensor> findTopSensor() {
+        return this.sensorRepository.findLatestSensor();
+    }
 }
 
 

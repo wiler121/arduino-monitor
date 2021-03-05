@@ -6,11 +6,66 @@
 </head>
 <body>
     <h1 th:text="#{welcome}">Welcome</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>motion</th>
+                    <th>timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="motion : ${motionListIndex}">
+                    <td th:text="${motion.id}">1</td>
+                    <td th:text="${motion.motion}">1</td>
+                    <td th:text="${motion.timestamp}">2020-11-14 01:26:15</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <div class="row">
-        <div class="col-md-12">
-            <img class="img-responsive" src="../static/resources/images/pets.png" th:src="@{/resources/images/pets.png}"/>
-        </div>
-    </div>
+    <br>
+    <br>
+    <br>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>light level</th>
+            <th>timestamp</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="light : ${lightsListIndex}">
+            <td th:text="${light.id}">1</td>
+            <td th:text="${light.lightLevel}">1</td>
+            <td th:text="${light.timestamp}">2020-11-14 01:26:15</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <br>
+    <br>
+    <br>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>temperature</th>
+            <th>humidity</th>
+            <th>co2</th>
+            <th>timestamp</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sensor : ${sensorListIndex}">
+            <td th:text="${sensor?.id}">1</td>
+            <td th:text="${sensor?.temperature}">1</td>
+            <td th:text="${sensor?.humidity}">1</td>
+            <td th:text="${sensor?.co2}">1</td>
+            <td th:text="${sensor?.timestamp}">2020-11-14 01:26:15</td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>
