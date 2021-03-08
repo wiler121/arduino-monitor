@@ -63,7 +63,7 @@ public class MotionPDFexporter {
 
         PdfPTable table = new PdfPTable(3);
         table.setWidthPercentage(100f);
-        table.setWidths(new float[] {4.0f, 4.0f, 6.0f});
+        table.setWidths(new float[]{4.0f, 4.0f, 6.0f});
         table.setSpacingBefore(5);
 
         writeTableHeader(table);

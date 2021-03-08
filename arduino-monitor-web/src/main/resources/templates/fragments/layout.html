@@ -17,7 +17,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-  <link rel="stylesheet" th:href="@{/resources/css/petclinic.css}" />
+  <link rel="stylesheet" th:href="@{/resources/css/arduino.css}" />
 
 </head>
 
@@ -71,6 +71,10 @@
           <li th:replace="::menuItem ('/sensorsPages/motion','motion','motion','th-list','motion')">
             <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
             <span>Motion</span>
+          </li>
+          <li th:replace="::menuItem ('/notifications','notifications','notifications','th-list','notifications')">
+            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+            <span>notifications</span>
           </li>
 
         </ul>

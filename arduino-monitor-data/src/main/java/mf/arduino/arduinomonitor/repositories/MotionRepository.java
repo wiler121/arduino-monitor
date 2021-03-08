@@ -13,6 +13,9 @@ public interface MotionRepository extends JpaRepository<Motion, Long> {
     @Query(nativeQuery = true, value = "SELECT * from motion ORDER BY id DESC LIMIT 1")
     List<Motion> findLatest();
 
+    @Query(nativeQuery = true, value = "SELECT * from motion ORDER BY id DESC LIMIT 1")
+    Motion[] findLatestArrayList();
+
     @Query(nativeQuery = true, value = "select * from motion Where timestamp BETWEEN :startDate AND :endDate")
     Page<Motion> findBetweenDates(@Param("startDate") String startDate, @Param("endDate") String endDate, Pageable pageable);
 }

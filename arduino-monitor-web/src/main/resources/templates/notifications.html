@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'notifications')}">
+<head>
+<head>
+    <meta charset="UTF-8">
+    <title>Notifications site</title>
+</head>
+<body>
+<br>
+<br>
+<br>
+    <h2> Notifications setup</h2>
+<br>
+    <h3>Sensors data notifications setup</h3>
+    <br>
+    <h5>Aktualne warunki dla powiadomień</h5>
+    <table class="table table-striped">
+        <thead>
+            <tr class="name">
+                <th>Temp. Min</th>
+                <th>Temp. Max</th>
+                <th>Hum. Min</th>
+                <th>Hum. Max</th>
+                <th>Co2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td th:text="${tempMin}"></td>
+                <td th:text="${tempMax}"></td>
+                <td th:text="${humMin}"></td>
+                <td th:text="${humMax}"></td>
+                <td th:text="${co2}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <form th:action="@{'/notifications/saveNotificationVariables'}">
+        <input name="tempMin" type="text" class="form-control" placeholder="Minimum temperature" th:value="${tempMin}">
+        <input name="tempMax" type="text" class="form-control" placeholder="Maximum temperature" th:value="${tempMax}">
+        <input name="humMin" type="text" class="form-control" placeholder="Minimum humidity" th:value="${humMin}">
+        <input name="humMax" type="text" class="form-control" placeholder="Maximum humidity" th:value="${humMax}">
+        <input name="co2" type="text" class="form-control" placeholder="Maximum co2" th:value="${co2}">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Save Variables</button>
+    </form>
+    <br>
+    <h3>Sensors data notifications task</h3>
+    <table>
+        <tbody>
+        <tr>
+            <td>
+                <form th:action="@{'notifications/stopScheduleSensor'}">
+                    <button  class="btn btn-lg btn-primary btn-block" type="submit">Stop schedule</button>
+                </form>
+            </td>
+            <td>
+                <form  th:action="@{'notifications/startScheduleSensor'}">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Start schedule</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>
